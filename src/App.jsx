@@ -1,5 +1,7 @@
-export default function App(){
-    return (
-        <h1 className = 'font-bold bg-red underline'>Hellow Horld</h1>
-    );
-}
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+} 
