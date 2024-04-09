@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button onClick={onSquareClick} className='bg-gray-300 border border-black h-20 w-20 m-1 leading-9 text-lg'>{value}</button>
+    <button onClick={onSquareClick} className='bg-gray-300 h-20 w-20 m-1 leading-9 text-lg rounded-lg'>{value}</button>
   );
 }
 
@@ -11,6 +11,7 @@ export default function Board() {
 
   function handleClick() {
     const nextSquare = square.slice();
+    console.log(nextSquare)
     nextSquare[0] = "X";
     setSquare(nextSquare)
   }
