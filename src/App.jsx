@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Square({ value, onSquareClick }) {
   return (
@@ -10,7 +11,7 @@ export default function Board() {
   const [square, setSquare] = useState(Array(9).fill(null))
 
   function handleClick() {
-    const nextSquare = square.slice();
+    const nextSquare = [...square];
     console.log(nextSquare)
     nextSquare[0] = "X";
     setSquare(nextSquare)
@@ -18,21 +19,29 @@ export default function Board() {
 
   return (
     <>
-      <div className='flex'>
-        <Square value={square[0]} onSquareClick={handleClick} />
-        <Square value={square[1]} />
-        <Square value={square[2]} />
-      </div>
-      <div className='flex'>
-        <Square value={square[3]} />
-        <Square value={square[4]} />
-        <Square value={square[5]} />
-      </div>
-      <div className='flex'>
-        <Square value={square[6]} />
-        <Square value={square[7]} />
-        <Square value={square[8]} />
+      <div>
+        <p className='flex justify-center text-gray-200 font-bold text-[3rem] underline pb-6'>Tic Tac Toe</p>
+        <div className='flex justify-center'>
+          <Square value={square[0]} onSquareClick={handleClick} />
+          <Square value={square[1]} />
+          <Square value={square[2]} />
+        </div>
+        <div className='flex justify-center'>
+          <Square value={square[3]} />
+          <Square value={square[4]} />
+          <Square value={square[5]} />
+        </div>
+        <div className='flex justify-center'>
+          <Square value={square[6]} />
+          <Square value={square[7]} />
+          <Square value={square[8]} />
+        </div>
       </div>
     </>
   );
 }
+
+Square.propTypes = {
+  value: PropTypes.any,
+  onSquareClick: PropTypes.func,
+};
