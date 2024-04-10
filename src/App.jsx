@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button onClick={onSquareClick} className='bg-gray-300 h-20 w-20 m-1 leading-9 text-lg rounded-lg'>{value}</button>
+    <button onClick={onSquareClick} className='bg-[#1f3540] h-20 w-20 m-1 leading-9 text-lg rounded-lg'>{value}</button>
   );
 }
 
@@ -12,9 +12,7 @@ export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
 
   const winner = calculateWinner(square);
-  // const status;
-  // winner ? status = `Winner : ${winner}` : status = `New Player : ${xIsNext ? 'X' : 'O'}`;
-  const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+  const status = winner ? `Winner : ${winner}` : `Next player : ${xIsNext ? 'X' : 'O'}`;
 
   function handleClick(i) {
     if (square[i] || winner) {
@@ -26,26 +24,33 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  function handleReset() {
+    setSquare(Array(9).fill(null));
+    setXIsNext(true);
+  }
+
   return (
     <>
-      <div>
-        <p className='flex justify-center text-gray-200 font-bold text-[3rem] underline pb-6'>{status}</p>
-        <div className='flex justify-center'>
+      <div className='flex flex-col items-center'>
+        <p className='text-[#26ffcb] font-bold text-[3rem] underline decoration-pink-700 pb-6'>{status}</p>
+        <div className='flex'>
           <Square value={square[0]} onSquareClick={() => handleClick(0)} />
           <Square value={square[1]} onSquareClick={() => handleClick(1)} />
           <Square value={square[2]} onSquareClick={() => handleClick(2)} />
         </div>
-        <div className='flex justify-center'>
+        <div className='flex'>
           <Square value={square[3]} onSquareClick={() => handleClick(3)} />
           <Square value={square[4]} onSquareClick={() => handleClick(4)} />
           <Square value={square[5]} onSquareClick={() => handleClick(5)} />
         </div>
-        <div className='flex justify-center'>
+        <div className='flex mb-6'>
           <Square value={square[6]} onSquareClick={() => handleClick(6)} />
           <Square value={square[7]} onSquareClick={() => handleClick(7)} />
           <Square value={square[8]} onSquareClick={() => handleClick(8)} />
         </div>
+        <button onClick={handleReset} className='w-[7rem] h-10 cursor-pointer text-[#26ffcb] rounded-[5rem] border-2 border-sky-300'>RESET</button>
       </div>
+
     </>
   );
 }
@@ -57,13 +62,15 @@ function calculateWinner(square) {
     [6, 7, 8],
     [0, 3, 6],
     [1, 4, 7],
-    [2, 5, 8],
+    [2, 5, 7],
     [0, 4, 8],
     [2, 4, 6],
   ];
+  console.log(square)
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (square[a] && square[a] === square[b] && square[a] === square[c]) {
+      // square[a] = X && [X] === [X] && [X] === [X]
       return square[a];
     }
   }
