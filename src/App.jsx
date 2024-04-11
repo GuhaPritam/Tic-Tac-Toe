@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
   return (
-    <button onClick={onSquareClick} className='bg-[#1f3540] h-20 w-20 m-1 leading-9 text-lg rounded-lg'>{value}</button>
+    <button onClick={onSquareClick} className={`bg-[#1f3540] h-20 w-20 m-1 leading-9 ${value === 'X' ? 'text-yellow-400' : 'text-red-400'} font-bold text-[3rem] rounded-lg`}>{value}</button>
   );
 }
 
@@ -12,7 +12,7 @@ export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
 
   const winner = calculateWinner(square);
-  const status = winner ? `Winner : ${winner}` : `Next player : ${xIsNext ? 'X' : 'O'}`;
+  const status = winner ? `Winner : ${winner}`: square.every(square => square === null) ? "Tic Tac Toe" : `Next player : ${xIsNext ? 'X' : 'O'}`;
 
   function handleClick(i) {
     if (square[i] || winner) {
@@ -50,7 +50,6 @@ export default function Board() {
         </div>
         <button onClick={handleReset} className='w-[7rem] h-10 cursor-pointer text-[#26ffcb] rounded-[5rem] border-2 border-sky-300'>RESET</button>
       </div>
-
     </>
   );
 }
@@ -66,11 +65,9 @@ function calculateWinner(square) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  console.log(square)
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (square[a] && square[a] === square[b] && square[a] === square[c]) {
-      // square[a] = X && [X] === [X] && [X] === [X]
       return square[a];
     }
   }
