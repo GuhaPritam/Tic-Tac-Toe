@@ -31,7 +31,7 @@ export default function Board() {
 
   return (
     <>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center mt-20'>
         <p className='text-[#26ffcb] font-bold text-[3rem] underline decoration-pink-700 pb-6'>{status}</p>
         <div className='flex'>
           <Square value={square[0]} onSquareClick={() => handleClick(0)} />
