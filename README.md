@@ -1,8 +1,26 @@
-# React + Vite
+# Title:
+Tik Tac Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Project Address:
+[[https://navbar-dark-mode-eight.vercel.app/](https://tic-tac-toe-lake-two.vercel.app/)]
 
-Currently, two official plugins are available:
+## Project Description:
+I created this in Vite, employing many simple approaches and basic conditions. It will be helpful for those who are just starting to learn.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Languages:
+- React
+- Vite
+- HTML
+- Tailwind CSS
+- Responsive Design
+- JavaScript
+
+
+## Links:
+- [My Website](https://www.pritamguha.com/)
+- [My Blog](https://blog.pritamguha.com/)
+
+
+![image](https://github.com/GuhaPritam/Tic-Tac-Toe/assets/71080574/6688ef1d-c317-4689-b582-070f491394b2)
+
+
